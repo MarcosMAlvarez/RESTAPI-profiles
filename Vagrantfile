@@ -17,6 +17,11 @@ Vagrant.configure("2") do |config|
 
  config.vm.network "forwarded_port", guest: 8000, host: 8000
 
+ config.vm.provider "virtualbox" do |v|
+    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+end
+
  config.vm.provision "shell", inline: <<-SHELL
    systemctl disable apt-daily.service
    systemctl disable apt-daily.timer
