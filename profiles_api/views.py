@@ -84,6 +84,7 @@ class HelloViewSet(viewsets.ViewSet):
 		"""Handle updating an object"""
 		return Response({'HTTP method': 'PUT'})
 
+
 	def partial_update(self, request, pk=None):
 		"""Handle updating part of an object"""
 		return Response({'HTTP method': 'PATCH'})
